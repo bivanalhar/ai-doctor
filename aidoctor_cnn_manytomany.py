@@ -102,7 +102,8 @@ def process_input(file, train_stat = True):
 	return train_data, train_label
 
 #collecting all the data for the training, validation and testing
-train_data, train_label = process_input('training_file/train_arrhytmia.txt', train_stat = False)
+train_data, train_label_train = process_input('training_file/train_arrhytmia.txt', train_stat = True) #for the training sake
+_, train_label_test = process_input('training_file/train_arrhytmia.txt', train_stat = False) #for the testing sake
 val_data, val_label = process_input('validation_file/val_arrhytmia.txt', train_stat = False)
 test_data, test_label = process_input('testing_file/test_arrhytmia.txt', train_stat = False)
 
@@ -126,13 +127,17 @@ kernel_size = 4
 
 #defining up the variable used for holding the input data and the label
 data = tf.placeholder(tf.float32, [None, 18, 73])
-target = tf.placeholder(tf.float32, [None, 2])
+target_12 = tf.placeholder(tf.float32, [None, 12, 2])
+target_1 = tf.placeholder(tf.float32, [None, 2])
 
 weight_1 = tf.Variable(tf.random_normal(shape = [kernel_size, int(data.get_shape()[2]), 32]))
 bias_1 = tf.Variable(tf.constant(0.1, shape = [32]))
 
 weight_2 = tf.Variable(tf.random_normal(shape = [kernel_size, 32, 64]))
 bias_2 = tf.Variable(tf.constant(0.1, shape = [64]))
+
+weight_final = tf.Variable(tf.random_normal(shape = [1, 64, 2]))
+bias_final = tf.Variable(tf.constant(0.1, shape = [2]))
 
 conv1 = tf.nn.conv1d(data, weight_1, stride = 1, padding = 'VALID')
 # print(conv1.get_shape().as_list())
@@ -143,22 +148,31 @@ conv2 = tf.nn.conv1d(conv1, weight_2, stride = 1, padding = 'VALID')
 conv2 = tf.nn.relu(conv2 + bias_2)
 # print(conv2.get_shape())
 
-conv2_flat = tf.reshape(conv2, [-1, 12 * 64])
-dense = tf.layers.dense(inputs=conv2_flat, units=128, activation=tf.nn.relu)
-dropout = tf.layers.dropout(inputs=dense, rate=dropout_rate)
+conv_final = tf.nn.conv1d(conv2, weight_final, stride = 1, padding = 'VALID')
+conv_final = tf.nn.softmax(tf.nn.relu(conv_final + bias_final))
+# print(conv_final.get_shape())
 
-logits = tf.layers.dense(inputs = dropout, units = 2)
+#getting the last element of the conv_final
+conv_last = tf.transpose(conv_final, [1, 0, 2])
+conv_last = tf.gather(conv_last, int(conv_last.get_shape()[0]) - 1)
 
-loss = tf.losses.softmax_cross_entropy(onehot_labels = target, logits = logits) + reg_param*(tf.nn.l2_loss(weight_1)+tf.nn.l2_loss(bias_1)+tf.nn.l2_loss(weight_2)+tf.nn.l2_loss(bias_2))
+cross_entropy = -tf.reduce_sum(target_12 * tf.log(tf.clip_by_value(conv_final, 1e-10, 1.0)), [1, 2])
+
+if l2_regularize:
+	loss = tf.reduce_mean(cross_entropy) + reg_param*(tf.nn.l2_loss(weight_1)+tf.nn.l2_loss(bias_1)+tf.nn.l2_loss(weight_2)+tf.nn.l2_loss(bias_2)+tf.nn.l2_loss(weight_final)+tf.nn.l2_loss(bias_final))
+else:
+	loss = tf.reduce_mean(cross_entropy)
+
+# loss = tf.losses.softmax_cross_entropy(onehot_labels = target, logits = logits) + reg_param*(tf.nn.l2_loss(weight_1)+tf.nn.l2_loss(bias_1)+tf.nn.l2_loss(weight_2)+tf.nn.l2_loss(bias_2))
 optimizer = tf.train.AdamOptimizer(learning_rate = learning_rate).minimize(loss)
 
-correct = tf.equal(tf.argmax(target, 1), tf.argmax(logits, 1))
+correct = tf.equal(tf.argmax(target_1, 1), tf.argmax(conv_last, 1))
 accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
 
 #initializing all the trainable parameters here
 init_op = tf.global_variables_initializer()
 
-f = open("170420_result_cnn.txt", 'w')
+f = open("170420_result_cnnseq.txt", 'w')
 f.write("Result of the experiment\n\n")
 
 batch_size_list = [128]
@@ -203,7 +217,7 @@ for batch_size1 in batch_size_list:
 
 							with tf.Session() as sess:
 								sess.run(init_op)
-								# sess.run(pool2, feed_dict = {data : train_data, target : train_label})
+								# sess.run(conv_final, feed_dict = {data : train_data, target : train_label_test})
 
 								for epoch in range(training_epoch):
 									epoch_list.append(epoch + 1)
@@ -213,11 +227,11 @@ for batch_size1 in batch_size_list:
 									# no_of_batches = 3
 
 									for i in range(no_of_batches):
-										batch_in, batch_out = train_data[ptr:ptr+batch_size], train_label[ptr:ptr+batch_size]
+										batch_in, batch_out, batch_test = train_data[ptr:ptr+batch_size], train_label_train[ptr:ptr+batch_size], train_label_test[ptr:ptr+batch_size]
 										ptr += batch_size
 										# target_ = sess.run([target], feed_dict = {data : batch_in, target : batch_out})
 
-										_, cost_ = sess.run([optimizer, loss], feed_dict = {data : batch_in, target : batch_out})
+										_, cost_ = sess.run([optimizer, loss], feed_dict = {data : batch_in, target_12 : batch_out, target_1 : batch_test})
 
 										avg_cost += cost_ / no_of_batches
 									# print("loss function = " + str(avg_cost))
@@ -228,18 +242,18 @@ for batch_size1 in batch_size_list:
 
 									if epoch in [9, 19, 49, 99, 199, 299, 499, 699, 999]:
 										f.write("During the " + str(epoch+1) + "-th epoch:\n")
-										f.write("Training Accuracy = " + str(sess.run(accuracy, feed_dict = {data : train_data, target : train_label})) + "\n")
-										f.write("Validation Accuracy = " + str(sess.run(accuracy, feed_dict = {data : val_data, target : val_label})) + "\n")
-										f.write("Testing Accuracy = " + str(sess.run(accuracy, feed_dict = {data : test_data, target : test_label})) + "\n\n")
+										f.write("Training Accuracy = " + str(sess.run(accuracy, feed_dict = {data : train_data, target_1 : train_label_test})) + "\n")
+										f.write("Validation Accuracy = " + str(sess.run(accuracy, feed_dict = {data : val_data, target_1 : val_label})) + "\n")
+										f.write("Testing Accuracy = " + str(sess.run(accuracy, feed_dict = {data : test_data, target_1 : test_label})) + "\n\n")
 								print("Optimization Finished")
 
 								plt.plot(epoch_list, cost_list)
 								plt.xlabel("Epoch (dropout = " + str(dropout_rate) + "learning rate = " + str(learning_rate) + ";epoch = " + str(training_epoch) + ")")
 								plt.ylabel("Cost Function")
 
-								training_accuracy = sess.run(accuracy, feed_dict = {data : train_data, target : train_label})
-								validation_accuracy = sess.run(accuracy, feed_dict = {data : val_data, target : val_label})
-								testing_accuracy = sess.run(accuracy, feed_dict = {data : test_data, target : test_label})
+								training_accuracy = sess.run(accuracy, feed_dict = {data : train_data, target_1 : train_label_test})
+								validation_accuracy = sess.run(accuracy, feed_dict = {data : val_data, target_1 : val_label})
+								testing_accuracy = sess.run(accuracy, feed_dict = {data : test_data, target_1 : test_label})
 								
 								print("Training Accuracy :", training_accuracy)
 								print("Validation Accuracy :", validation_accuracy)
@@ -247,7 +261,7 @@ for batch_size1 in batch_size_list:
 
 								plt.title("Train Acc = " + str(training_accuracy * 100) + "\nTest Acc = " + str(testing_accuracy * 100))
 
-								plt.savefig("170420_cnn Exp " + str(count_exp) + ".png")
+								plt.savefig("170420_cnnseq Exp " + str(count_exp) + ".png")
 
 								plt.clf()
 

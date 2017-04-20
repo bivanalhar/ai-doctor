@@ -95,9 +95,9 @@ def process_input(file, train_stat = True):
 	return train_data, train_label
 
 #collecting all the data for the training, validation and testing
-train_data, train_label = process_input('train_arrhytmia.txt', train_stat = False)
-val_data, val_label = process_input('val_arrhytmia.txt', train_stat = False)
-test_data, test_label = process_input('test_arrhytmia.txt', train_stat = False)
+train_data, train_label = process_input('training_file/train_arrhytmia.txt', train_stat = False)
+val_data, val_label = process_input('validation_file/val_arrhytmia.txt', train_stat = False)
+test_data, test_label = process_input('testing_file/test_arrhytmia.txt', train_stat = False)
 
 # print(train_label.count([0.0, 1.0]))
 # print(len(train_label))
@@ -139,7 +139,7 @@ prediction = tf.nn.softmax(tf.matmul(last, weight) + bias)
 cross_entropy = -tf.reduce_sum(target * tf.log(tf.clip_by_value(prediction,1e-10,1.0)))
 
 if l2_regularize:
-	cost = tf.reduce_mean(cross_entropy) + tf.nn.l2_loss(weight) + tf.nn.l2_loss(bias)
+	cost = tf.reduce_mean(cross_entropy) + reg_param * (tf.nn.l2_loss(weight) + tf.nn.l2_loss(bias))
 else:
 	cost = tf.reduce_mean(cross_entropy)
 
@@ -152,7 +152,7 @@ accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
 #initializing all the trainable parameters here
 init_op = tf.global_variables_initializer()
 
-f = open("170412_result.txt", 'w')
+f = open("170420_result_rnn.txt", 'w')
 f.write("Result of the experiment\n\n")
 
 batch_size_list = [128]
@@ -240,7 +240,7 @@ for batch_size1 in batch_size_list:
 
 								plt.title("Train Acc = " + str(training_accuracy * 100) + "\nTest Acc = " + str(testing_accuracy * 100))
 
-								plt.savefig("170412 Exp " + str(count_exp) + ".png")
+								plt.savefig("170420_rnn Exp " + str(count_exp) + ".png")
 
 								plt.clf()
 

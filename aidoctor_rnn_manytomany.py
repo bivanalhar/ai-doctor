@@ -150,7 +150,7 @@ prediction_cost = tf.reshape(prediction_cost, [-1, max_length, num_classes])
 cross_entropy = -tf.reduce_sum(target_12 * tf.log(tf.clip_by_value(prediction_cost,1e-10,1.0)), [1, 2])
 
 if l2_regularize:
-	cost = tf.reduce_mean(cross_entropy) + tf.nn.l2_loss(weight) + tf.nn.l2_loss(bias)
+	cost = tf.reduce_mean(cross_entropy) + reg_param * (tf.nn.l2_loss(weight) + tf.nn.l2_loss(bias))
 else:
 	cost = tf.reduce_mean(cross_entropy)
 
@@ -163,7 +163,7 @@ accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
 #initializing all the trainable parameters here
 init_op = tf.global_variables_initializer()
 
-f = open("170414_result.txt", 'w')
+f = open("170420_result_seq.txt", 'w')
 f.write("Result of the experiment\n\n")
 
 batch_size_list = [128]
@@ -251,7 +251,7 @@ for batch_size1 in batch_size_list:
 
 								plt.title("Train Acc = " + str(training_accuracy * 100) + "\nTest Acc = " + str(testing_accuracy * 100))
 
-								plt.savefig("170414 Exp " + str(count_exp) + ".png")
+								plt.savefig("170420_seq Exp " + str(count_exp) + ".png")
 
 								plt.clf()
 
