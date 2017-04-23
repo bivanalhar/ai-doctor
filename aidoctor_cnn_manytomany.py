@@ -150,11 +150,17 @@ conv2 = tf.nn.relu(conv2 + bias_2)
 
 conv_final = tf.nn.conv1d(conv2, weight_final, stride = 1, padding = 'VALID')
 conv_final = tf.nn.softmax(tf.nn.relu(conv_final + bias_final))
-# print(conv_final.get_shape())
 
-#getting the last element of the conv_final
 conv_last = tf.transpose(conv_final, [1, 0, 2])
 conv_last = tf.gather(conv_last, int(conv_last.get_shape()[0]) - 1)
+
+# print(conv_final.get_shape())
+# conv_final = tf.Print(conv_final, [conv_final], summarize = 24)
+
+#getting the last element of the conv_final
+
+# print(conv_last.get_shape())
+# conv_last = tf.Print(conv_last, [conv_last], summarize = 32)
 
 cross_entropy = -tf.reduce_sum(target_12 * tf.log(tf.clip_by_value(conv_final, 1e-10, 1.0)), [1, 2])
 
@@ -172,8 +178,8 @@ accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
 #initializing all the trainable parameters here
 init_op = tf.global_variables_initializer()
 
-f = open("170420_result_cnnseq.txt", 'w')
-f.write("Result of the experiment\n\n")
+# f = open("170423_result_cnnseq.txt", 'w')
+# f.write("Result of the experiment\n\n")
 
 batch_size_list = [128]
 hidden_layer_list = [128]
@@ -211,58 +217,59 @@ for batch_size1 in batch_size_list:
 							print("l2Reg = " + str(l2_regularize))
 							print("reg_param = " + str(reg_param))
 
-							f.write("setting up the experiment with\n")
-							f.write("batch size = " + str(batch_size) + ", hidden nodes = " + str(hidden_nodes) + ", learning rate = " + str(learning_rate) + "\n")
-							f.write("training epoch = " + str(training_epoch) + ", dropout rate = " + str(1 - dropout_rate) + ", reg_param = " + str(reg_param) + "\n\n")
+							# f.write("setting up the experiment with\n")
+							# f.write("batch size = " + str(batch_size) + ", hidden nodes = " + str(hidden_nodes) + ", learning rate = " + str(learning_rate) + "\n")
+							# f.write("training epoch = " + str(training_epoch) + ", dropout rate = " + str(1 - dropout_rate) + ", reg_param = " + str(reg_param) + "\n\n")
 
 							with tf.Session() as sess:
 								sess.run(init_op)
 								# sess.run(conv_final, feed_dict = {data : train_data, target : train_label_test})
 
 								for epoch in range(training_epoch):
-									epoch_list.append(epoch + 1)
+									# epoch_list.append(epoch + 1)
 									ptr = 0
 									avg_cost = 0.
-									no_of_batches = int(len(train_data) / batch_size)
-									# no_of_batches = 3
+									# no_of_batches = int(len(train_data) / batch_size)
+									no_of_batches = 1
 
 									for i in range(no_of_batches):
 										batch_in, batch_out, batch_test = train_data[ptr:ptr+batch_size], train_label_train[ptr:ptr+batch_size], train_label_test[ptr:ptr+batch_size]
 										ptr += batch_size
 										# target_ = sess.run([target], feed_dict = {data : batch_in, target : batch_out})
 
-										_, cost_ = sess.run([optimizer, loss], feed_dict = {data : batch_in, target_12 : batch_out, target_1 : batch_test})
+										_, cost_ = sess.run([optimizer, loss], feed_dict = {data : batch_in, target_12 : batch_out})
 
 										avg_cost += cost_ / no_of_batches
-									# print("loss function = " + str(avg_cost))
-									cost_list.append(avg_cost)
+									print("loss function = " + str(avg_cost))
+									# cost_list.append(avg_cost)
 
 									# sess.run(target_exp, feed_dict = {data : train_data, target : train_label})
 									# sess.run(arg_pred, feed_dict = {data : train_data, target : train_label})
 
-									if epoch in [9, 19, 49, 99, 199, 299, 499, 699, 999]:
-										f.write("During the " + str(epoch+1) + "-th epoch:\n")
-										f.write("Training Accuracy = " + str(sess.run(accuracy, feed_dict = {data : train_data, target_1 : train_label_test})) + "\n")
-										f.write("Validation Accuracy = " + str(sess.run(accuracy, feed_dict = {data : val_data, target_1 : val_label})) + "\n")
-										f.write("Testing Accuracy = " + str(sess.run(accuracy, feed_dict = {data : test_data, target_1 : test_label})) + "\n\n")
+									# if epoch in [9, 19, 49, 99, 199, 299, 499, 699, 999]:
+									# 	f.write("During the " + str(epoch+1) + "-th epoch:\n")
+									# 	f.write("Training Accuracy = " + str(sess.run(accuracy, feed_dict = {data : train_data, target_1 : train_label_test})) + "\n")
+									# 	f.write("Validation Accuracy = " + str(sess.run(accuracy, feed_dict = {data : val_data, target_1 : val_label})) + "\n")
+									# 	f.write("Testing Accuracy = " + str(sess.run(accuracy, feed_dict = {data : test_data, target_1 : test_label})) + "\n\n")
 								print("Optimization Finished")
 
-								plt.plot(epoch_list, cost_list)
-								plt.xlabel("Epoch (dropout = " + str(dropout_rate) + "learning rate = " + str(learning_rate) + ";epoch = " + str(training_epoch) + ")")
-								plt.ylabel("Cost Function")
+								# plt.plot(epoch_list, cost_list)
+								# plt.xlabel("Epoch (dropout = " + str(dropout_rate) + "learning rate = " + str(learning_rate) + ";epoch = " + str(training_epoch) + ")")
+								# plt.ylabel("Cost Function")
 
-								training_accuracy = sess.run(accuracy, feed_dict = {data : train_data, target_1 : train_label_test})
-								validation_accuracy = sess.run(accuracy, feed_dict = {data : val_data, target_1 : val_label})
-								testing_accuracy = sess.run(accuracy, feed_dict = {data : test_data, target_1 : test_label})
+								training_accuracy = sess.run(accuracy, feed_dict = {data : train_data[0:128-1], target_1 : train_label_test[0:128-1]})
+								validation_accuracy = sess.run(accuracy, feed_dict = {data : val_data[0:128-1], target_1 : val_label[0:128-1]})
+								testing_accuracy = sess.run(accuracy, feed_dict = {data : test_data[0:128-1], target_1 : test_label[0:128-1]})
 								
 								print("Training Accuracy :", training_accuracy)
 								print("Validation Accuracy :", validation_accuracy)
 								print("Testing Accuracy :", testing_accuracy)
 
-								plt.title("Train Acc = " + str(training_accuracy * 100) + "\nTest Acc = " + str(testing_accuracy * 100))
+								# plt.title("Train Acc = " + str(training_accuracy * 100) + "\nTest Acc = " + str(testing_accuracy * 100))
 
-								plt.savefig("170420_cnnseq Exp " + str(count_exp) + ".png")
+								# plt.savefig("170423_cnnseq Exp " + str(count_exp) + ".png")
 
-								plt.clf()
+								# plt.clf()
 
 								count_exp += 1
+# f.close()
