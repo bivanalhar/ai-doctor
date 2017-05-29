@@ -1,0 +1,884 @@
+Result of the experiment
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.09999999999999998, reg_param = 0.1
+
+During the 10-th epoch:
+Training Accuracy = 0.638988
+Validation Accuracy = 0.594912
+Testing Accuracy = 0.679317
+
+During the 20-th epoch:
+Training Accuracy = 0.80066
+Validation Accuracy = 0.792564
+Testing Accuracy = 0.822581
+
+During the 50-th epoch:
+Training Accuracy = 0.877646
+Validation Accuracy = 0.878669
+Testing Accuracy = 0.874763
+
+During the 100-th epoch:
+Training Accuracy = 0.879296
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.879507
+
+During the 200-th epoch:
+Training Accuracy = 0.879571
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.879507
+
+During the 300-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.879507
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.09999999999999998, reg_param = 0.01
+
+During the 10-th epoch:
+Training Accuracy = 0.372835
+Validation Accuracy = 0.358121
+Testing Accuracy = 0.386148
+
+During the 20-th epoch:
+Training Accuracy = 0.466868
+Validation Accuracy = 0.455969
+Testing Accuracy = 0.481025
+
+During the 50-th epoch:
+Training Accuracy = 0.843827
+Validation Accuracy = 0.857143
+Testing Accuracy = 0.83871
+
+During the 100-th epoch:
+Training Accuracy = 0.868848
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.864326
+
+During the 200-th epoch:
+Training Accuracy = 0.879021
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.878558
+
+During the 300-th epoch:
+Training Accuracy = 0.880396
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.879507
+
+During the 500-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.879507
+
+During the 700-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.09999999999999998, reg_param = 0.001
+
+During the 10-th epoch:
+Training Accuracy = 0.860599
+Validation Accuracy = 0.876712
+Testing Accuracy = 0.860531
+
+During the 20-th epoch:
+Training Accuracy = 0.869948
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.871916
+
+During the 50-th epoch:
+Training Accuracy = 0.874072
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.874763
+
+During the 100-th epoch:
+Training Accuracy = 0.879021
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.875712
+
+During the 200-th epoch:
+Training Accuracy = 0.878471
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.87666
+
+During the 300-th epoch:
+Training Accuracy = 0.880121
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.879507
+
+During the 500-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.19999999999999996, reg_param = 0.1
+
+During the 10-th epoch:
+Training Accuracy = 0.489139
+Validation Accuracy = 0.522505
+Testing Accuracy = 0.491461
+
+During the 20-th epoch:
+Training Accuracy = 0.491339
+Validation Accuracy = 0.528376
+Testing Accuracy = 0.49241
+
+During the 50-th epoch:
+Training Accuracy = 0.502062
+Validation Accuracy = 0.538161
+Testing Accuracy = 0.501898
+
+During the 100-th epoch:
+Training Accuracy = 0.874897
+Validation Accuracy = 0.876712
+Testing Accuracy = 0.875712
+
+During the 200-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.880455
+
+During the 300-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.19999999999999996, reg_param = 0.01
+
+During the 10-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 20-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 50-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 100-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 200-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 300-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.19999999999999996, reg_param = 0.001
+
+During the 10-th epoch:
+Training Accuracy = 0.863899
+Validation Accuracy = 0.868885
+Testing Accuracy = 0.855788
+
+During the 20-th epoch:
+Training Accuracy = 0.872972
+Validation Accuracy = 0.878669
+Testing Accuracy = 0.864326
+
+During the 50-th epoch:
+Training Accuracy = 0.874072
+Validation Accuracy = 0.880626
+Testing Accuracy = 0.870968
+
+During the 100-th epoch:
+Training Accuracy = 0.872972
+Validation Accuracy = 0.878669
+Testing Accuracy = 0.872865
+
+During the 200-th epoch:
+Training Accuracy = 0.875997
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.87666
+
+During the 300-th epoch:
+Training Accuracy = 0.877921
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.877609
+
+During the 500-th epoch:
+Training Accuracy = 0.879021
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.879507
+
+During the 700-th epoch:
+Training Accuracy = 0.879296
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880121
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.30000000000000004, reg_param = 0.1
+
+During the 10-th epoch:
+Training Accuracy = 0.856475
+Validation Accuracy = 0.8591
+Testing Accuracy = 0.854839
+
+During the 20-th epoch:
+Training Accuracy = 0.869123
+Validation Accuracy = 0.870841
+Testing Accuracy = 0.864326
+
+During the 50-th epoch:
+Training Accuracy = 0.874897
+Validation Accuracy = 0.880626
+Testing Accuracy = 0.870019
+
+During the 100-th epoch:
+Training Accuracy = 0.877096
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.874763
+
+During the 200-th epoch:
+Training Accuracy = 0.879846
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.87666
+
+During the 300-th epoch:
+Training Accuracy = 0.880396
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.879507
+
+During the 500-th epoch:
+Training Accuracy = 0.880396
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.880455
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.30000000000000004, reg_param = 0.01
+
+During the 10-th epoch:
+Training Accuracy = 0.682706
+Validation Accuracy = 0.692759
+Testing Accuracy = 0.684061
+
+During the 20-th epoch:
+Training Accuracy = 0.82898
+Validation Accuracy = 0.818004
+Testing Accuracy = 0.836812
+
+During the 50-th epoch:
+Training Accuracy = 0.877921
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.877609
+
+During the 100-th epoch:
+Training Accuracy = 0.879571
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.878558
+
+During the 200-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 300-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.30000000000000004, reg_param = 0.001
+
+During the 10-th epoch:
+Training Accuracy = 0.609568
+Validation Accuracy = 0.598826
+Testing Accuracy = 0.641366
+
+During the 20-th epoch:
+Training Accuracy = 0.750344
+Validation Accuracy = 0.722114
+Testing Accuracy = 0.765655
+
+During the 50-th epoch:
+Training Accuracy = 0.865274
+Validation Accuracy = 0.853229
+Testing Accuracy = 0.862429
+
+During the 100-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.881404
+
+During the 200-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 300-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.880455
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.880455
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.4, reg_param = 0.1
+
+During the 10-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 20-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 50-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 100-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 200-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 300-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.4, reg_param = 0.01
+
+During the 10-th epoch:
+Training Accuracy = 0.850426
+Validation Accuracy = 0.863014
+Testing Accuracy = 0.839658
+
+During the 20-th epoch:
+Training Accuracy = 0.866923
+Validation Accuracy = 0.876712
+Testing Accuracy = 0.867173
+
+During the 50-th epoch:
+Training Accuracy = 0.873797
+Validation Accuracy = 0.880626
+Testing Accuracy = 0.872865
+
+During the 100-th epoch:
+Training Accuracy = 0.876821
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.878558
+
+During the 200-th epoch:
+Training Accuracy = 0.879296
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.880455
+
+During the 300-th epoch:
+Training Accuracy = 0.879296
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.880396
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.4, reg_param = 0.001
+
+During the 10-th epoch:
+Training Accuracy = 0.494638
+Validation Accuracy = 0.465753
+Testing Accuracy = 0.511385
+
+During the 20-th epoch:
+Training Accuracy = 0.648337
+Validation Accuracy = 0.600783
+Testing Accuracy = 0.647059
+
+During the 50-th epoch:
+Training Accuracy = 0.876547
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.878558
+
+During the 100-th epoch:
+Training Accuracy = 0.879571
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.878558
+
+During the 200-th epoch:
+Training Accuracy = 0.880121
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.878558
+
+During the 300-th epoch:
+Training Accuracy = 0.880121
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.879507
+
+During the 500-th epoch:
+Training Accuracy = 0.880121
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.879507
+
+During the 700-th epoch:
+Training Accuracy = 0.880121
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.880455
+
+During the 1000-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.5, reg_param = 0.1
+
+During the 10-th epoch:
+Training Accuracy = 0.877646
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.880455
+
+During the 20-th epoch:
+Training Accuracy = 0.877921
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.880455
+
+During the 50-th epoch:
+Training Accuracy = 0.878746
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.880455
+
+During the 100-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.881404
+
+During the 200-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 300-th epoch:
+Training Accuracy = 0.881221
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.881221
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.881221
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.880455
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.880455
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.5, reg_param = 0.01
+
+During the 10-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 20-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 50-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 100-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 200-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 300-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.5, reg_param = 0.001
+
+During the 10-th epoch:
+Training Accuracy = 0.869123
+Validation Accuracy = 0.880626
+Testing Accuracy = 0.867173
+
+During the 20-th epoch:
+Training Accuracy = 0.869123
+Validation Accuracy = 0.880626
+Testing Accuracy = 0.867173
+
+During the 50-th epoch:
+Training Accuracy = 0.870773
+Validation Accuracy = 0.880626
+Testing Accuracy = 0.86907
+
+During the 100-th epoch:
+Training Accuracy = 0.873247
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.871917
+
+During the 200-th epoch:
+Training Accuracy = 0.877371
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.879507
+
+During the 300-th epoch:
+Training Accuracy = 0.878746
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.879846
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.7, reg_param = 0.1
+
+During the 10-th epoch:
+Training Accuracy = 0.769865
+Validation Accuracy = 0.753425
+Testing Accuracy = 0.793169
+
+During the 20-th epoch:
+Training Accuracy = 0.806709
+Validation Accuracy = 0.819961
+Testing Accuracy = 0.821632
+
+During the 50-th epoch:
+Training Accuracy = 0.872972
+Validation Accuracy = 0.878669
+Testing Accuracy = 0.878558
+
+During the 100-th epoch:
+Training Accuracy = 0.877371
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.880455
+
+During the 200-th epoch:
+Training Accuracy = 0.880396
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 300-th epoch:
+Training Accuracy = 0.880396
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.880671
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.7, reg_param = 0.01
+
+During the 10-th epoch:
+Training Accuracy = 0.877921
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.879507
+
+During the 20-th epoch:
+Training Accuracy = 0.876272
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.878558
+
+During the 50-th epoch:
+Training Accuracy = 0.878196
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.879507
+
+During the 100-th epoch:
+Training Accuracy = 0.879571
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.880455
+
+During the 200-th epoch:
+Training Accuracy = 0.879846
+Validation Accuracy = 0.882583
+Testing Accuracy = 0.880455
+
+During the 300-th epoch:
+Training Accuracy = 0.879846
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.880455
+
+During the 500-th epoch:
+Training Accuracy = 0.880396
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.880455
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.88454
+Testing Accuracy = 0.880455
+
+setting up the experiment with
+batch size = 128, hidden nodes = 128, learning rate = 0.0001
+training epoch = 1000, dropout rate = 0.7, reg_param = 0.001
+
+During the 10-th epoch:
+Training Accuracy = 0.779764
+Validation Accuracy = 0.802348
+Testing Accuracy = 0.754269
+
+During the 20-th epoch:
+Training Accuracy = 0.782238
+Validation Accuracy = 0.802348
+Testing Accuracy = 0.756167
+
+During the 50-th epoch:
+Training Accuracy = 0.878471
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.87666
+
+During the 100-th epoch:
+Training Accuracy = 0.880121
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.879507
+
+During the 200-th epoch:
+Training Accuracy = 0.880121
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 300-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 500-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 700-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+
+During the 1000-th epoch:
+Training Accuracy = 0.880946
+Validation Accuracy = 0.886497
+Testing Accuracy = 0.881404
+

@@ -130,53 +130,54 @@ data = tf.placeholder(tf.float32, [None, 18, 73])
 target_12 = tf.placeholder(tf.float32, [None, 12, 2])
 target_1 = tf.placeholder(tf.float32, [None, 2])
 
-weight_1 = tf.Variable(tf.random_normal(shape = [kernel_size, int(data.get_shape()[2]), 32]))
-bias_1 = tf.Variable(tf.constant(0.1, shape = [32]))
+with tf.device("/gpu:1"):
+	weight_1 = tf.Variable(tf.random_normal(shape = [kernel_size, int(data.get_shape()[2]), 32]))
+	bias_1 = tf.Variable(tf.constant(0.1, shape = [32]))
 
-weight_2 = tf.Variable(tf.random_normal(shape = [kernel_size, 32, 64]))
-bias_2 = tf.Variable(tf.constant(0.1, shape = [64]))
+	weight_2 = tf.Variable(tf.random_normal(shape = [kernel_size, 32, 64]))
+	bias_2 = tf.Variable(tf.constant(0.1, shape = [64]))
 
-weight_final = tf.Variable(tf.random_normal(shape = [1, 64, 2]))
-bias_final = tf.Variable(tf.constant(0.1, shape = [2]))
+	weight_final = tf.Variable(tf.random_normal(shape = [1, 64, 2]))
+	bias_final = tf.Variable(tf.constant(0.1, shape = [2]))
 
-conv1 = tf.nn.conv1d(data, weight_1, stride = 1, padding = 'VALID')
-# print(conv1.get_shape().as_list())
-conv1 = tf.nn.relu(conv1 + bias_1)
-# print(conv1.get_shape())
+	conv1 = tf.nn.conv1d(data, weight_1, stride = 1, padding = 'VALID')
+	# print(conv1.get_shape().as_list())
+	conv1 = tf.nn.relu(conv1 + bias_1)
+	# print(conv1.get_shape())
 
-conv2 = tf.nn.conv1d(conv1, weight_2, stride = 1, padding = 'VALID')
-conv2 = tf.nn.relu(conv2 + bias_2)
-# print(conv2.get_shape())
+	conv2 = tf.nn.conv1d(conv1, weight_2, stride = 1, padding = 'VALID')
+	conv2 = tf.nn.relu(conv2 + bias_2)
+	# print(conv2.get_shape())
 
-conv_final = tf.nn.conv1d(conv2, weight_final, stride = 1, padding = 'VALID')
-conv_final = tf.nn.softmax(tf.nn.relu(conv_final + bias_final))
+	conv_final = tf.nn.conv1d(conv2, weight_final, stride = 1, padding = 'VALID')
+	conv_final = tf.nn.softmax(tf.nn.relu(conv_final + bias_final))
 
-conv_last = tf.transpose(conv_final, [1, 0, 2])
-conv_last = tf.gather(conv_last, int(conv_last.get_shape()[0]) - 1)
+	conv_last = tf.transpose(conv_final, [1, 0, 2])
+	conv_last = tf.gather(conv_last, int(conv_last.get_shape()[0]) - 1)
 
-# print(conv_final.get_shape())
-# conv_final = tf.Print(conv_final, [conv_final], summarize = 24)
+	# print(conv_final.get_shape())
+	# conv_final = tf.Print(conv_final, [conv_final], summarize = 24)
 
-#getting the last element of the conv_final
+	#getting the last element of the conv_final
 
-# print(conv_last.get_shape())
-# conv_last = tf.Print(conv_last, [conv_last], summarize = 32)
+	# print(conv_last.get_shape())
+	# conv_last = tf.Print(conv_last, [conv_last], summarize = 32)
 
-cross_entropy = -tf.reduce_sum(target_12 * tf.log(tf.clip_by_value(conv_final, 1e-10, 1.0)), [1, 2])
+	cross_entropy = -tf.reduce_sum(target_12 * tf.log(tf.clip_by_value(conv_final, 1e-10, 1.0)), [1, 2])
 
-if l2_regularize:
-	loss = tf.reduce_mean(cross_entropy) + reg_param*(tf.nn.l2_loss(weight_1)+tf.nn.l2_loss(bias_1)+tf.nn.l2_loss(weight_2)+tf.nn.l2_loss(bias_2)+tf.nn.l2_loss(weight_final)+tf.nn.l2_loss(bias_final))
-else:
-	loss = tf.reduce_mean(cross_entropy)
+	if l2_regularize:
+		loss = tf.reduce_mean(cross_entropy) + reg_param*(tf.nn.l2_loss(weight_1)+tf.nn.l2_loss(bias_1)+tf.nn.l2_loss(weight_2)+tf.nn.l2_loss(bias_2)+tf.nn.l2_loss(weight_final)+tf.nn.l2_loss(bias_final))
+	else:
+		loss = tf.reduce_mean(cross_entropy)
 
-# loss = tf.losses.softmax_cross_entropy(onehot_labels = target, logits = logits) + reg_param*(tf.nn.l2_loss(weight_1)+tf.nn.l2_loss(bias_1)+tf.nn.l2_loss(weight_2)+tf.nn.l2_loss(bias_2))
-optimizer = tf.train.AdamOptimizer(learning_rate = learning_rate).minimize(loss)
+	# loss = tf.losses.softmax_cross_entropy(onehot_labels = target, logits = logits) + reg_param*(tf.nn.l2_loss(weight_1)+tf.nn.l2_loss(bias_1)+tf.nn.l2_loss(weight_2)+tf.nn.l2_loss(bias_2))
+	optimizer = tf.train.AdamOptimizer(learning_rate = learning_rate).minimize(loss)
 
-correct = tf.equal(tf.argmax(target_1, 1), tf.argmax(conv_last, 1))
-accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
+	correct = tf.equal(tf.argmax(target_1, 1), tf.argmax(conv_last, 1))
+	accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
 
-#initializing all the trainable parameters here
-init_op = tf.global_variables_initializer()
+	#initializing all the trainable parameters here
+	init_op = tf.global_variables_initializer()
 
 # f = open("170423_result_cnnseq.txt", 'w')
 # f.write("Result of the experiment\n\n")

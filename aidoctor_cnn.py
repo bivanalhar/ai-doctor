@@ -128,35 +128,36 @@ kernel_size = 4
 data = tf.placeholder(tf.float32, [None, 18, 73])
 target = tf.placeholder(tf.float32, [None, 2])
 
-weight_1 = tf.Variable(tf.random_normal(shape = [kernel_size, int(data.get_shape()[2]), 32]))
-bias_1 = tf.Variable(tf.constant(0.1, shape = [32]))
+with tf.device("/gpu:0"):
+	weight_1 = tf.Variable(tf.random_normal(shape = [kernel_size, int(data.get_shape()[2]), 32]))
+	bias_1 = tf.Variable(tf.constant(0.1, shape = [32]))
 
-weight_2 = tf.Variable(tf.random_normal(shape = [kernel_size, 32, 64]))
-bias_2 = tf.Variable(tf.constant(0.1, shape = [64]))
+	weight_2 = tf.Variable(tf.random_normal(shape = [kernel_size, 32, 64]))
+	bias_2 = tf.Variable(tf.constant(0.1, shape = [64]))
 
-conv1 = tf.nn.conv1d(data, weight_1, stride = 1, padding = 'VALID')
-# print(conv1.get_shape().as_list())
-conv1 = tf.nn.relu(conv1 + bias_1)
-# print(conv1.get_shape())
+	conv1 = tf.nn.conv1d(data, weight_1, stride = 1, padding = 'VALID')
+	# print(conv1.get_shape().as_list())
+	conv1 = tf.nn.relu(conv1 + bias_1)
+	# print(conv1.get_shape())
 
-conv2 = tf.nn.conv1d(conv1, weight_2, stride = 1, padding = 'VALID')
-conv2 = tf.nn.relu(conv2 + bias_2)
-# print(conv2.get_shape())
+	conv2 = tf.nn.conv1d(conv1, weight_2, stride = 1, padding = 'VALID')
+	conv2 = tf.nn.relu(conv2 + bias_2)
+	# print(conv2.get_shape())
 
-conv2_flat = tf.reshape(conv2, [-1, 12 * 64])
-dense = tf.layers.dense(inputs=conv2_flat, units=128, activation=tf.nn.relu)
-dropout = tf.layers.dropout(inputs=dense, rate=dropout_rate)
+	conv2_flat = tf.reshape(conv2, [-1, 12 * 64])
+	dense = tf.layers.dense(inputs=conv2_flat, units=128, activation=tf.nn.relu)
+	dropout = tf.layers.dropout(inputs=dense, rate=dropout_rate)
 
-logits = tf.layers.dense(inputs = dropout, units = 2)
+	logits = tf.layers.dense(inputs = dropout, units = 2)
 
-loss = tf.losses.softmax_cross_entropy(onehot_labels = target, logits = logits) + reg_param*(tf.nn.l2_loss(weight_1)+tf.nn.l2_loss(bias_1)+tf.nn.l2_loss(weight_2)+tf.nn.l2_loss(bias_2))
-optimizer = tf.train.AdamOptimizer(learning_rate = learning_rate).minimize(loss)
+	loss = tf.losses.softmax_cross_entropy(onehot_labels = target, logits = logits) + reg_param*(tf.nn.l2_loss(weight_1)+tf.nn.l2_loss(bias_1)+tf.nn.l2_loss(weight_2)+tf.nn.l2_loss(bias_2))
+	optimizer = tf.train.AdamOptimizer(learning_rate = learning_rate).minimize(loss)
 
-correct = tf.equal(tf.argmax(target, 1), tf.argmax(logits, 1))
-accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
+	correct = tf.equal(tf.argmax(target, 1), tf.argmax(logits, 1))
+	accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
 
-#initializing all the trainable parameters here
-init_op = tf.global_variables_initializer()
+	#initializing all the trainable parameters here
+	init_op = tf.global_variables_initializer()
 
 f = open("170420_result_cnn.txt", 'w')
 f.write("Result of the experiment\n\n")

@@ -1,0 +1,60 @@
+Only considering the very last timestep for each patient
+
+Training and Testing with Multi-Layer Perceptron
+Area Under the Curve is  0.644305705059
+Accuracy for Multi-Layer Perceptron =  87.28652751423151 
+
+Training and Testing with Logistic Regression
+Area Under the Curve is  0.720120559742
+Accuracy for Logistic Regression =  87.66603415559773 
+
+Training and Testing with Logistic Regression (l1 penalty)
+Area Under the Curve is  0.727078579117
+Accuracy for Logistic Regression =  87.76091081593927 
+
+Training and Testing with Decision Tree Classifier
+Area Under the Curve is  0.579952637244
+Accuracy for Decision Tree =  80.26565464895636 
+
+Training and Testing with Random Forest Classifier
+Area Under the Curve is  0.579875134553
+Accuracy for Random Forest =  87.85578747628084 
+
+Training and Testing with Bagging Classifier
+Area Under the Curve is  0.716977395048
+Accuracy for Random Forest =  87.85578747628084 
+
+Training and Testing with Voting Classifier
+Area Under the Curve is  0.723143164693
+Accuracy for Random Forest =  88.1404174573055 
+
+
+Now considering all the timestep
+
+Training and Testing with Multi-Layer Perceptron
+Area Under the Curve is  0.534997105296
+Accuracy for Multi-Layer Perceptron =  92.64828738512949 
+
+Training and Testing with Logistic Regression
+Area Under the Curve is  0.704418651119
+Accuracy for Logistic Regression =  92.64828738512949 
+
+Training and Testing with Logistic Regression (l1 penalty)
+Area Under the Curve is  0.705169865358
+Accuracy for Logistic Regression =  92.64828738512949 
+
+Training and Testing with Decision Tree Classifier
+Area Under the Curve is  0.536352877285
+Accuracy for Decision Tree =  86.29908103592314 
+
+Training and Testing with Random Forest Classifier
+Area Under the Curve is  0.603849444627
+Accuracy for Random Forest =  92.64828738512949 
+
+Training and Testing with Bagging Classifier
+Area Under the Curve is  0.704420572383
+Accuracy for Random Forest =  92.62740183792816 
+
+Training and Testing with Voting Classifier
+Area Under the Curve is  0.674747930158
+Accuracy for Random Forest =  92.64828738512949 
